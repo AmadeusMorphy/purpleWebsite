@@ -1,0 +1,215 @@
+// img {
+//     width: 400px;
+//     height: 400px;
+// }
+
+// .col1 {
+//     display: flex;
+//     justify-content: center;
+// }
+
+// .col2 {
+//     display: grid;
+//     justify-items: center;
+// }
+
+
+
+::ng-deep .p-card .p-card-body {
+    height: 50px;
+}
+
+::ng-deep .p-card.p-component {
+    height: 300px;
+    border-radius: 18px !important;
+}
+
+::ng-deep .p-card-body {
+    padding-top: 0px;
+
+}
+
+// ::ng-deep .p-card-header img {
+//     height: 180px;
+//     width: 320px !important;
+//     // border-radius: 20px 20px 0px 0px !important;
+
+// }
+
+::ng-deep .p-card .p-card-body {
+    height: 1px;
+}
+
+::ng-deep .p-menubar {
+    margin: 30px !important;
+}
+
+
+
+.cardss {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    padding-top: 190px !important;
+}
+
+p-card {
+    // flex: 1 1 calc(20% - 20px);
+    /* 20% width for 5 items per row, minus the gap */
+    box-sizing: border-box;
+    /* Include padding and border in the width and height calculation */
+    margin-bottom: 20px;
+    /* Optional: Adds space below each row */
+
+    border-radius: 20px;
+}
+
+p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h4 {
+    margin-bottom: 0px;
+    margin-left: 15px;
+}
+
+.btnSort {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.details {
+    margin-right: 15px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navBar {
+    border-radius: 18px;
+    width: 800px;
+    display: flex;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    box-shadow: 0.1px rgb(77, 77, 77);
+}
+
+.thumbnail-container {
+    position: relative;
+}
+
+.thumbnail-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+// .thumbnail-animation img {
+//     width: 100%;
+//     height: 100%;
+// }
+
+.col1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-left: 70px;
+    margin-right: 70px;
+    padding-top: 120px;
+}
+
+::ng-deep .p-element.ng-tns-c421417325-9.ng-star-inserted {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.col2 {
+    margin-top: 20px;
+}
+
+img {
+    border-radius: 18px 18px 0px 0px;
+    cursor: pointer;
+}
+
+.textBox {
+    display: flex;
+    justify-content: space-between;
+}
+
+::ng-deep i.pi.pi-ellipsis-v {
+    padding-top: 15px !important;
+    cursor: pointer;
+}
+
+
+.imgBox {
+    position: relative;
+    display: inline-block;
+}
+
+.imgBox img {
+    display: block;
+    width: 100%;
+}
+
+.gender-label {
+    position: absolute;
+    bottom: 1px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.ogTitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Set the maximum number of lines to show */
+    -webkit-box-orient: vertical;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    padding-top: 7px;
+    max-height: 3.6em;
+
+}
+
+
+
+// .ogTitle:after {
+//     content: "...";
+//     display: inline-block;
+//     margin-left: 5px;
+// }
+
+.ogViews {
+    color: gray
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+::ng-deep div#pn_id_22 {
+    top: 100% !important;
+}

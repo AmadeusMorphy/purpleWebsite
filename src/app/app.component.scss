@@ -1,0 +1,374 @@
+.card {
+    background: var(--surface-card);
+    border: var(--card-border);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+}
+
+::ng-deep .p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-content .p-menuitem-link {
+    gap: 15px;
+}
+
+::ng-deep div#pn_id_4 {
+    display: none !important;
+}
+
+::ng-deep .p-menubar {
+    margin: 0 !important;
+}
+
+::ng-deep span#pn_id_12_header {
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+
+.flex.align-items-center {
+    gap: 18px !important;
+    justify-content: space-between;
+    display: flex;
+}
+
+.logo {
+    height: 50px;
+    width: 100%;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.stickyHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hidden {
+    transform: translateY(-100%);
+}
+
+::ng-deep .p-dialog-header.ng-tns-c4042076560-0.ng-star-inserted {
+    display: none;
+}
+
+::ng-deep .p-dialog-header.ng-tns-c4042076560-1.ng-star-inserted {
+    display: none;
+}
+
+::ng-deep .p-dialog {
+    width: 60%;
+    height: 60%;
+}
+
+
+
+::ng-deep .ng-tns-c4042076560-0.p-dialog-content {
+    padding: 0;
+}
+
+::ng-deep .ng-tns-c4042076560-0.p-dialog-content {
+    overflow-y: clip;
+}
+
+.form-container {
+    margin: 20% 30px 20px 0;
+}
+
+.regInputs {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-radius: 30px;
+}
+
+
+::ng-deep .ng-tns-c4042076560-1.p-dialog-content {
+    padding: 0;
+}
+
+.dialog-content {
+    display: flex;
+    height: 100%;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* LOGING DIALOG */
+
+.dialogContainer {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    /* Ensures the layout adapts on smaller screens */
+}
+
+@media (max-width: 1024px) {
+    .dialogContainer {
+        height: auto;
+    }
+
+    .dialogContainerSignup.ng-tns-c4042076560-1 {
+        height: auto;
+    }
+
+    .container1 {
+        height: 90%;
+    }
+
+    .container2 {
+        height: 45%
+    }
+
+    .dialogContainerSignup.ng-tns-c4042076560-1 {
+        height: 50%;
+    }
+
+    .card.flex.justify-content-center {
+        margin-bottom: -7rem;
+    }
+
+    ::ng-deep .p-dialog {
+        height: 64% !important;
+    }
+}
+
+.dialogContainerSignup {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.container1 {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.loginImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom-left-radius: 18px;
+    border-top-left-radius: 18px;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 1rem;
+}
+
+::ng-deep .card {
+    width: 100%;
+    max-width: auto;
+    /* Constrain maximum width */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: #272727 !important;
+}
+
+.responsiveInput {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    height: 35%;
+    font-family: sexyFont;
+}
+
+.titleLogin {
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-family: sexyFont;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+
+    .container1,
+    .container2 {
+        width: 100%;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    .loginImg {
+        border-top-right-radius: 18px;
+        border-top-left-radius: 18px;
+        border-bottom-left-radius: 0;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .responsiveInput {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .responsiveInput {
+        padding: 0.4rem;
+        font-size: 0.8rem;
+    }
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+}
+
+.header-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-image img {
+    max-width: 80px;
+    height: auto;
+}
+
+.dialog-content {
+    display: flex;
+    height: calc(100% - 60px);
+}
+
+.form-container {
+    flex: 1;
+    padding: 20px;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+::ng-deep button.p-button {
+    width: 280px;
+    border-radius: 30px;
+}
+
+body {
+    margin: 0;
+}
+
+::ng-deep .p-menubar.p-component {
+    margin: 9px !important;
+}
+
+::ng-deep .p-sidebar {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('/assets/signupPic.png') !important;
+    /* Path to your image */
+    background-size: cover;
+    /* Makes sure the image covers the whole sidebar */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* Prevents repeating */
+}
+
+::ng-deep .p-sidebar-header.ng-tns-c3811825900-0 {
+    margin-left: 85%
+}
+
+::ng-deep .p-sidebar-header.ng-tns-c3811825900-1 {
+    margin-left: 85%;
+}
+
+.loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.loginItems {
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Optional: Add background color if needed */
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    height: 500px;
+    display: grid;
+
+    /* Optional: Add shadow for better appearance */
+}
+
+.loginInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 30px;
+}
+
+::ng-deep div#pn_id_3 {
+    top: 100% !important;
+}
+
+.responsiveInput {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    height: 22%;
+}
+
+.loginTitle {
+    font-family: sexyFont;
+    display: flex;
+    justify-content: center;
+}
+
+::ng-deep button.p-ripple.p-element.p-button.p-component {
+    color: white !important;
+}
+
+::ng-deep div#pn_id_5 {
+    top: 100% !important;
+}
