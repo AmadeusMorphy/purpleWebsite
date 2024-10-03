@@ -20,7 +20,7 @@
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "baseHref": "/purpleWebsite/",
+            "baseHref": "/purpleWebsite",
             "polyfills": [
               "zone.js"
             ],
