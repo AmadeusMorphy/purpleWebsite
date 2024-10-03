@@ -1,10 +1,10 @@
-1. ng build --output-path=dist --base-href="/purpleWebsite/"
+ ng build --output-path=dist --base-href="/purpleWebsite/"
 
-2. git add .
+git add .
    git commit -m "Updated the project with new changes"
    git push origin main
 
-3. npx angular-cli-ghpages --dir=dist
+ npx angular-cli-ghpages --dir=dist
 
 npx gh-pages -d dist
 
