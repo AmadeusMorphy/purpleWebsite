@@ -1,4 +1,4 @@
-1. ng build --output-path=dist --base-href="/apiWebsite/"
+1. ng build --output-path=dist --base-href="/purpleWebsite/"
 
 2. git add .
    git commit -m "Updated the project with new changes"
@@ -6,9 +6,9 @@
 
 3. npx angular-cli-ghpages --dir=dist
 
-npx gh-pages -d dist/apiWebsite
+npx gh-pages -d dist
 
 
-4. https://amadeusmorphy.github.io/apiWebsite/
+4. https://amadeusmorphy.github.io/purpleWebsite/
 
 ng build --prod --base-href "https://amadeusmorphy.github.io/apiWebsite/" use this instead of the first one
