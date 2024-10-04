@@ -30,6 +30,7 @@ export class AppComponent {
 
   userName: any;
 
+  isLoggedIn: boolean = false;
   lastScrollTop = 0;
   isHidden = false;
   visible: boolean = false;
@@ -138,12 +139,13 @@ export class AppComponent {
       },
       {
         label: 'Pictures',
-        icon: 'pi pi-frame',
+        icon: 'pi pi-images',
         routerLink: '/pictures'
       },
       {
         label: 'Features',
-        icon: 'pi pi-star'
+        icon: 'pi pi-star',
+        routerLink: '/favorites'
       },
     ];
 
@@ -246,6 +248,7 @@ export class AppComponent {
 
     this.userService.signIn(email, password).subscribe(
       (response) => {
+        this.isLoggedIn = true;
         if (response.length > 0) {
           this.isLoading = false
           // Assuming the response contains user data
@@ -272,6 +275,7 @@ export class AppComponent {
 
 
   logout() {
+    this.isLoggedIn = false;
     localStorage.removeItem('userId'); // Remove user data
     this.userLoggedIn = false; // Update login status
     this.updateMenuItems(); // Update menu items back to logged-out version

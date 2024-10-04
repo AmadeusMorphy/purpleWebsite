@@ -1,14 +1,16 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
+
 @Component({
-  selector: 'app-favorites',
-  templateUrl: './favorites.component.html',
-  styleUrls: ['./favorites.component.scss']
+  selector: 'app-videos',
+  templateUrl: './videos.component.html',
+  styleUrls: ['./videos.component.scss']
 })
-export class FavoritesComponent {
+export class VideosComponent {
+
   playlistItemForm!: FormGroup; // Form for playlist item
   loggedInUser: any = {};
 

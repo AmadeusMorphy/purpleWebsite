@@ -37,7 +37,8 @@
         <div class="profile">
 
           <p-menu #menu [model]="sideItems" [popup]="true" />
-          <p-avatar (click)="menu.toggle($event)" icon="pi pi-user" styleClass="mr-2" size="large" shape="circle" />
+          <p-avatar *ngIf="isLoggedIn == false" (click)="menu.toggle($event)" icon="pi pi-user" styleClass="mr-2" size="large" shape="circle" />
+          <p-avatar *ngIf="isLoggedIn == true" (click)="menu.toggle($event)" image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" size="large" shape="circle" />
         </div>
       </div>
     </ng-template>
