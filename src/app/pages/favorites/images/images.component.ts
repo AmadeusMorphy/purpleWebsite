@@ -44,4 +44,8 @@ export class ImagesComponent {
    
     }
   }
+
+  routeBack() {
+    this.router.navigate(['/favorites'])
+  }
 }

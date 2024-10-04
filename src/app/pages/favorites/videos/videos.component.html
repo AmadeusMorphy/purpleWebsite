@@ -9,7 +9,16 @@
     </div>
   </div>
 
+  <p-toast />
 
+  <div class="backBtn" (click)="routeBack()">
+
+      <i class="pi pi-arrow-left"></i>
+  </div>
+
+  <div class="emptyPage">
+  <h2 *ngIf="loggedInUser?.playlist?.length == 0">You have no videos here buddy</h2>
+</div>
 <div class="cardss">
     <p-card [style]="{ width: '320px' }" *ngFor="let fav of loggedInUser?.playlist">
         <ng-template pTemplate="header">

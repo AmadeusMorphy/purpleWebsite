@@ -37,6 +37,7 @@ export class VideosComponent {
     private messsageService: MessageService) { }
 
   ngOnInit(): void {
+
     this.playlistItemForm = this.fb.group({
       item: [''] // Form control for playlist item input
     });
@@ -60,6 +61,8 @@ export class VideosComponent {
 
     // Fetch the logged-in user data (you would probably get this from a login or user management service)
     this.getLoggedInUser();
+
+
   }
 
   getLoggedInUser(): void {
@@ -82,8 +85,11 @@ export class VideosComponent {
         
         this.router.navigate(['/home'])
         console.error('No user ID found in local storage');
-   
     }
+
+    // if(this.loggedInUser?.playlist[0].videoId != null) {
+    //   this.emptyPage == false;
+    // }
   }
 
   getLoggedInUserFav() {
@@ -114,6 +120,7 @@ export class VideosComponent {
     if (this.loggedInUser) {
       this.userService.deleteVideoFromPlaylist(this.loggedInUser.id, this.favVideo.videoId).subscribe(
         (updateUser) => {
+          
           console.log('DELETED FROM THE DB: ', updateUser);
           this.messsageService.add({ severity: 'success', summary: 'Video Deleted!', icon: 'pi pi-times', detail: 'It has been removed from your favorites' });
           this.loggedInUser = updateUser;
@@ -176,4 +183,8 @@ export class VideosComponent {
     }
   }
 
+
+  routeBack() {
+    this.router.navigate(['/favorites'])
+  }
 }

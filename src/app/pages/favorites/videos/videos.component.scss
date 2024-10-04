@@ -51,7 +51,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 
-    padding-top: 190px !important;
+    padding-top: 160px !important;
 }
 
 p-card {
@@ -151,6 +151,30 @@ img {
 }
 
 
+.backBtn {
+    margin-top: 137px;
+    width: 40px;
+    background-color: white;
+    border-radius: 50px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    align-items: center;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+h2 {
+    margin-top: 320px;
+}
+
+.emptyPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .imgBox {
     position: relative;
     display: inline-block;
@@ -188,7 +212,9 @@ img {
 
 }
 
-
+::ng-deep div#pn_id_7 {
+    top: 100% !important;
+}
 
 // .ogTitle:after {
 //     content: "...";
