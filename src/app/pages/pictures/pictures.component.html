@@ -3,7 +3,7 @@
 
         <div class="img" *ngFor="let img of pics">
             <div class="heart-container" title="Like">
-                <input type="checkbox" class="checkbox" id="Give-It-An-Id">
+                <input type="checkbox"  (click)="selectedFav(img.id)"  (click)="putImgDb()" class="checkbox" id="Give-It-An-Id">
                 <div class="svg-container">
                     <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -25,7 +25,7 @@
                     </svg>
                 </div>
             </div>
-            <p-image [src]="img.imgUrl" alt="Image" width="auto" [preview]="true" />
+            <p-image [src]="img.imgUrl"alt="Image" width="auto" [preview]="true" />
         </div>
     </div>
 </div>

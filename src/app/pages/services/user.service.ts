@@ -28,7 +28,16 @@ export class UserService {
       switchMap(user => {
         // Concatenate the new item to the existing playlist
         const updatedPlaylist = user.playlist ? user.playlist.concat(newPlaylistItem) : [newPlaylistItem];
-        return this.http.patch<any>(`${this.apiUrl}/${userId}`, { playlist: updatedPlaylist });
+        return this.http.put<any>(`${this.apiUrl}/${userId}`, { playlist: updatedPlaylist });
+      })
+    );
+  }
+  updateImages(userId: string, newImageItem: string): Observable<any> {
+    return this.getUser(userId).pipe(  // Get the user first
+      switchMap(user => {
+        // Concatenate the new item to the existing playlist
+        const updateImages = user.images ? user.images.concat(newImageItem) : [newImageItem];
+        return this.http.put<any>(`${this.apiUrl}/${userId}`, { images: updateImages });
       })
     );
   }

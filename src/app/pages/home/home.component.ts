@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
 
     // this.myDb()
     this.checkUserLoggedIn()
-    this.freeApi()
+    // this.freeApi()
 
     this.videoItem = [
       {
@@ -114,14 +114,14 @@ export class HomeComponent implements OnInit {
     ];
   }
 
-  freeApi() {
+  // freeApi() {
 
-    this.http.get('https://api.redtube.com/?data=redtube').subscribe(
-      (res: any) => {
-        console.log('FREE API: ', res)
-      }
-    )
-  }
+  //   this.http.get('https://api.redtube.com/?data=redtube').subscribe(
+  //     (res: any) => {
+  //       console.log('FREE API: ', res)
+  //     }
+  //   )
+  // }
 
 
   // myDb() {

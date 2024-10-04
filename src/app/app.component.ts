@@ -221,10 +221,11 @@ export class AppComponent {
   }
 
   checkUserLoggedIn() {
+    const userData = localStorage
     const user = localStorage.getItem('userId');
-    const UserName = localStorage.getItem('userName')
+    const UserName = localStorage.getItem('username')
     this.userName = UserName
-    console.log(this.userName)
+    console.log(localStorage)
     this.userLoggedIn = user !== null;
     console.log(this.userLoggedIn)
     if (user) {
@@ -254,7 +255,7 @@ export class AppComponent {
           // Assuming the response contains user data
           const user = response[0]; // Get the first matched user
           localStorage.setItem('userId', user.id);
-          localStorage.setItem('userName', user.name);
+          localStorage.setItem('username', user.username);
 
           this.dialogService.closeLoginDialog();
           this.userLoggedIn = true; // Update login status

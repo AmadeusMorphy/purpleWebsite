@@ -1,1 +1,8 @@
-<p>images works!</p>
+<div class="imgContainer">
+    <div class="imgs">
+
+        <div class="img" *ngFor="let img of loggedInUser?.images">
+            <p-image [src]="img.imgUrl" alt="Image" width="auto" [preview]="true" />
+        </div>
+    </div>
+</div>
