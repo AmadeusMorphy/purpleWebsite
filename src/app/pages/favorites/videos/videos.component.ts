@@ -63,14 +63,17 @@ export class VideosComponent {
   }
 
   getLoggedInUser(): void {
+    this.isLoading = true;
     const userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
 
     this.changeDetectorRef.detectChanges()
     if (userId) {
       this.userService.getUser(userId).subscribe(user => {
         this.loggedInUser = user;
+        console.log(this.loggedInUser)
         this.isLoading = false
       }, error => {
+        this.isLoading = false
         console.error('Error fetching user data', error);
       });
     } else {
