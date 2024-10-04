@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { UserService } from '../services/user.service';
-
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-pictures',
   templateUrl: './pictures.component.html',
@@ -13,7 +13,8 @@ export class PicturesComponent {
   constructor(
     private http: HttpClient, 
     private changeDetectorRef: ChangeDetectorRef,
-    private userService: UserService
+    private userService: UserService,
+    private messsageService: MessageService
   ) { }
 
   pics: {
@@ -106,6 +107,8 @@ export class PicturesComponent {
     if (this.loggedInUser) {
       this.userService.updateImages(this.currentUserId, newFav).subscribe(
         (updateUs) => {
+          this.messsageService.add({ severity: 'success', summary: 'Image Added!', icon: 'pi pi-heart', detail: 'Its now in your favorites' });
+
           console.log('ADDED TO THE DB: ', updateUs);
           this.loggedInUser = updateUs;
 
