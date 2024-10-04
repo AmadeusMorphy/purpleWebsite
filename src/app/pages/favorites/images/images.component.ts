@@ -22,7 +22,6 @@ export class ImagesComponent {
     this.getLoggedInUser()
     
   }
-
   getLoggedInUser(): void {
     this.isLoading = true;
     const userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
