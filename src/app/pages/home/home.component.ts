@@ -184,6 +184,7 @@ export class HomeComponent implements OnInit {
   numberOfVid: number = 52;
 
   getAdult() {
+    this.isLoading = true;
     const adultApi = `https://www.eporner.com/api/v2/video/search/?query=${this.searchQuery}&per_page=1000&page=${this.changePage}&thumbsize=big&order=top-weekly&gay=0&lq=1&format=json`;
 
     this.http.get(adultApi).subscribe(

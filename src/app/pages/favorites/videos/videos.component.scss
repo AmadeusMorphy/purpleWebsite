@@ -49,8 +49,7 @@
 .cardss {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 80px;
+    justify-content: space-evenly;
 
     padding-top: 190px !important;
 }
