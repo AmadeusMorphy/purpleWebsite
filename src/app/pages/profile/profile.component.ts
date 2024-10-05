@@ -20,9 +20,10 @@ export class ProfileComponent {
   currentUserId: any;
   profImg: any;
   loggedInUser: any = {};
-
+  isDelete: boolean = false
   userName: any;
   checkLength: any;
+  dateJoined: Date | null = null;
 
   currentUserImg: string = '';
 
@@ -55,6 +56,7 @@ export class ProfileComponent {
           this.putImgDb()
           // Save the uploaded image URL
           this.isLoading = false;
+          this.visible = false
           this.messageService.add({ severity: 'success', summary: 'File Uploaded', detail: 'Image uploaded successfully!' });
         }
       },
@@ -66,6 +68,21 @@ export class ProfileComponent {
     );
   }
 
+  openDelete() {
+    this.isDelete = true
+  }
+  onDeleteImg() {
+    this.userService.deleteImage(this.currentUserId, this.currentUserImg).subscribe(
+      (res: any) => {
+        console.log('Img deleted: ', res)
+        this.isDelete = false
+        this.checkUserLoggedIn()
+        window.location.reload()
+      }, (error) => {
+        console.log('Error stuff', error)
+      }
+    )
+  }
   onEdit() {
     this.visible = true;
   }
@@ -85,7 +102,9 @@ export class ProfileComponent {
           this.currentUserImg = res.profileImg[0]
           console.log(res.profileImg?.length)
           this.checkLength = res.profileImg?.length
-
+          const onDateJoined = res.DateJoined
+          this.dateJoined = new Date(onDateJoined)
+          console.log(this.dateJoined)
         }
       )
 

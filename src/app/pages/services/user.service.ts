@@ -52,6 +52,16 @@ export class UserService {
     );
   }
 
+  deleteImage(userId: string, imageUrl: string): Observable<any> {
+    return this.getUser(userId).pipe(  // Get the user first
+      switchMap(user => {
+        // Filter out the image to be deleted from the profileImg array
+        const updatedImg = user.profileImg ? user.profileImg.filter((img: string) => img !== imageUrl) : [];
+        return this.http.put<any>(`${this.apiUrl}/${userId}`, { profileImg: updatedImg });
+      })
+    );
+  }
+
   deleteVideoFromPlaylist(userId: string, videoToDeleteId: string): Observable<any> {
     return this.getUser(userId).pipe(
       switchMap(user => {

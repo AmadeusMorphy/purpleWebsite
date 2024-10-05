@@ -3,6 +3,7 @@
 
 <div class="profileCard">
 
+    <p-toast></p-toast>
     <div class="profileItems">
         <div class="profilePic">
             <!-- <img src="assets/loginPic.png" alt=""> -->
@@ -10,6 +11,9 @@
             <img *ngIf="this.checkLength > 0" [src]="this.currentUserImg">
             <div class="editImg" *ngIf="this.checkLength == 0">
                 <i class="pi pi-pencil" (click)="onEdit()"></i>
+            </div>
+            <div class="editImg" *ngIf="this.checkLength == 1">
+                <i class="pi pi-pencil" (click)="openDelete()"></i>
             </div>
         </div>
 
@@ -19,7 +23,7 @@
 
         <div class="userInfo">
             <div class="dateUser">
-                <p>Joined at: </p>
+                <p>Joined at: <br><br> {{this.dateJoined}}</p>
             </div>
             <div class="videos">
                 <p>Videos saved: </p>
@@ -45,5 +49,23 @@
     </p-fileUpload>
 
 
+
+</p-dialog>
+
+
+<p-dialog header="Upload profile picture" [modal]="true" [(visible)]="isDelete" [style]="{ width: '50rem' }"
+    [breakpoints]="{ '1000px': '75vw', '400px': '90vw' }">
+
+    <div class="deleteGroup">
+        <div class="deleteContent">
+
+            <img [src]="this.currentUserImg">
+
+            <div class="deleteBtn">
+
+                <p-button (onClick)="onDeleteImg()">Delete Image</p-button>
+            </div>
+        </div>
+    </div>
 
 </p-dialog>

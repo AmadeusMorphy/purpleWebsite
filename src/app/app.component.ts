@@ -100,7 +100,8 @@ export class AppComponent {
       username: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      playlist: []
+      playlist: [],
+      DateJoined: [new Date()]
     });
   }
 

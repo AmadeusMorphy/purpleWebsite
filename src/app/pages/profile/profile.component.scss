@@ -56,3 +56,18 @@ img {
 ::ng-deep button.p-button {
     width: auto !important;
 }
+
+.deleteGroup {
+    display: flex;
+    justify-content: center;
+}
+
+.deleteContent {
+    display: grid;
+}
+
+.deleteBtn {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
