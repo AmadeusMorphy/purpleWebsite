@@ -1,11 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MenuItem, MessageService } from 'primeng/api';
 import { ImageSlideshowService } from 'src/app/image-slideshow.service';
 import { DialogService } from '../services/dialog.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import { filter } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { FunctionsService } from '../services/functions.service';
 
 interface PageEvent {
@@ -96,6 +96,7 @@ export class HomeComponent implements OnInit {
     this.checkUserLoggedIn()
     this.freeApi()
 
+    this.getData()
     this.videoItem = [
       {
         label: 'Do stuff',
@@ -112,6 +113,23 @@ export class HomeComponent implements OnInit {
         ]
       }
     ];
+  }
+
+  getData() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-PORNDB-APIKEY': '4f5e77d9ff65895b44ac0a0b4a7facd1'  // Attach the API key
+    });
+
+    const body = {}
+    const PSapi = 'https://api.porndb.me/api/UserSubscription/GetAllPornstars';
+
+    this.http.post(PSapi, null, { headers }).subscribe(
+      (response: any) => {
+        console.log('Pornstars: ', response)
+      }
+    )
+
   }
 
   freeApi() {

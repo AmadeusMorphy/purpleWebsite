@@ -48,7 +48,8 @@
 
 
 
-<p-sidebar [(visible)]="showLoginDialog" [fullScreen]="true">
+<p-sidebar [(visible)]="showLoginDialog" [fullScreen]="true" (onShow)="toggleBodyScroll()"
+  (onHide)="toggleBodyScroll()">
   <div *ngIf="isLoading" class="loading">
     <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
       animationDuration=".5s" />
@@ -66,7 +67,8 @@
     </div>
   </div>
 </p-sidebar>
-<p-sidebar [(visible)]="showSignUpDialog" [fullScreen]="true">
+<p-sidebar [(visible)]="showSignUpDialog" [fullScreen]="true" (onShow)="toggleBodyScroll()"
+  (onHide)="toggleBodyScroll()">
   <div *ngIf="isLoading" class="loading">
     <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
       animationDuration=".5s" />

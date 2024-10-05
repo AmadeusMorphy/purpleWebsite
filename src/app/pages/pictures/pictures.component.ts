@@ -28,7 +28,8 @@ export class PicturesComponent {
   }[] = []
 
   imgDialog: boolean = false;
-  selectedImageUrl: string = ''
+  selectedImageUrl: string = '';
+  isLoading: boolean = false;
 
 
   ngOnInit() {
@@ -42,6 +43,8 @@ export class PicturesComponent {
 
   getPics() {
 
+    this.isLoading = true;
+
     this.http.get('https://www.pornpics.com/additional_thumbs?mix=1&langs=en-US&code=jo').subscribe(
       (res: any) => {
         console.log('FREE API: ', res.data.map((item: any) => item.t))
@@ -52,13 +55,18 @@ export class PicturesComponent {
             title: item.n
           }
         })
-        console.log(this.pics)
+        console.log(this.pics);
+        this.isLoading = false
+      }, (error) => {
+        this.isLoading = false;
+        console.log('Error fetching data: ', error);
       }
     )
   }
 
   getPics2() {
 
+    this.isLoading = true;
     this.http.get('https://www.pornpics.com/additional_thumbs?mix=1&langs=en-US&code=jo').subscribe(
       (res: any) => {
         console.log('FREE API: ', res.data.map((item: any) => item.t))
@@ -69,11 +77,13 @@ export class PicturesComponent {
             title: item.n
           }
         })
+        this.isLoading = false
         console.log(this.pics2)
       }
     )
   }
   getPics3() {
+    this.isLoading = true
 
     this.http.get('https://www.pornpics.com/additional_thumbs?mix=1&langs=en-US&code=jo').subscribe(
       (res: any) => {
@@ -85,13 +95,14 @@ export class PicturesComponent {
             title: item.n
           }
         })
-
+        this.isLoading = false
         console.log(this.pics3)
       }
     )
   }
   getPics4() {
 
+    this.isLoading = true;
     this.http.get('https://www.pornpics.com/additional_thumbs?mix=1&langs=en-US&code=jo').subscribe(
       (res: any) => {
         console.log('FREE API: ', res.data.map((item: any) => item.t))
@@ -102,7 +113,7 @@ export class PicturesComponent {
             title: item.n
           }
         })
-
+        this.isLoading = false
         console.log(this.pics4)
       }
     )

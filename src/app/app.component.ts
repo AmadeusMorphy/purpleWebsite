@@ -126,6 +126,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
+    document.body.style.overflow = 'auto';
 
     // this.userLoggedIn = this.authService.isLoggedIn();
     this.checkUserLoggedIn()
@@ -194,6 +195,24 @@ export class AppComponent {
 
   }
 
+  toggleBodyScroll() {
+    // When showLoginDialog changes, disable or enable body scroll
+    if (this.showLoginDialog || this.showSignUpDialog) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }
+
+  openSidebar() {
+    this.showLoginDialog = true;
+    this.toggleBodyScroll();  // Disable scroll when opening
+  }
+
+  closeSidebar() {
+    this.showLoginDialog = false;
+    this.toggleBodyScroll();  // Enable scroll when closing
+  }
 
   onClosLogIn() {
     this.dialogService.closeLoginDialog()
@@ -248,6 +267,7 @@ export class AppComponent {
       (response) => {
         if (response.length > 0) {
           this.isLoading = false
+          window.location.reload()
           // Assuming the response contains user data
           const user = response[0]; // Get the first matched user
           localStorage.setItem('userId', user.id);
