@@ -42,7 +42,15 @@ export class UserService {
     );
   }
 
-
+  uploadImage(userId: string, newProfileImage: string): Observable<any> {
+    return this.getUser(userId).pipe(  // Get the user first
+      switchMap(user => {
+        // Concatenate the new item to the existing playlist
+        const updatedImg = user.profileImg ? user.profileImg.concat(newProfileImage) : [newProfileImage];
+        return this.http.put<any>(`${this.apiUrl}/${userId}`, { profileImg: updatedImg });
+      })
+    );
+  }
 
   deleteVideoFromPlaylist(userId: string, videoToDeleteId: string): Observable<any> {
     return this.getUser(userId).pipe(

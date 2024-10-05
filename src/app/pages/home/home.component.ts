@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   isLoading: boolean = true;
 
 
-  searchQuery: string = '';
+  searchQuery: string = 'Milf';
   currentCard: any;
   changePage: number = 1;
 

@@ -29,6 +29,7 @@ export class AppComponent {
   errorMessage: string = '';
 
   userName: any;
+  userLength: any;
 
   isLoggedIn: boolean = false;
   lastScrollTop = 0;
@@ -40,6 +41,7 @@ export class AppComponent {
   showSignUpDialog: boolean = false;
   loginForm!: FormGroup;
 
+  userImg: string = ''
   query: string = '';
 
   loggedOutItems: MenuItem[] = [
@@ -95,7 +97,7 @@ export class AppComponent {
 
     this.signUpForm = this.fb.group({
       id: [generateUniqueId()],
-      name: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       playlist: []
@@ -248,6 +250,14 @@ export class AppComponent {
     this.userLoggedIn = user !== null;
     console.log(this.userLoggedIn)
     if (user) {
+
+      this.userService.getUser(user).subscribe(
+        (res: any) => {
+          this.userLength = res.profileImg?.length
+          this.userImg = res.profileImg[0];
+          console.log("Manual Service Response: ", res)
+        }
+      )
       this.userLoggedIn == true;
       console.log("You are logged in as: ", user);
     } else {

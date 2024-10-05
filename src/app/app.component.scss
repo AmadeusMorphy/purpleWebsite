@@ -32,6 +32,7 @@
 ::ng-deep .p-inputtext.p-component.p-element {
     border-radius: 30px !important;
 }
+
 .flex.align-items-center {
     gap: 18px !important;
     justify-content: space-between;
@@ -314,6 +315,10 @@ body {
     justify-content: center;
     height: 100vh;
     /* Prevents repeating */
+}
+
+.profile {
+    cursor: pointer;
 }
 
 ::ng-deep .p-sidebar-header.ng-tns-c3811825900-0 {

@@ -32,7 +32,9 @@ import { PicturesComponent } from './pages/pictures/pictures.component';
 import { NumberFormatPipe } from './number-format.pipe';
 import { ImageModule } from 'primeng/image';
 import { VideosComponent } from './pages/favorites/videos/videos.component';
-import { ImagesComponent } from './pages/favorites/images/images.component'
+import { ImagesComponent } from './pages/favorites/images/images.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { FileUploadModule } from 'primeng/fileupload';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import { ImagesComponent } from './pages/favorites/images/images.component'
     PicturesComponent,
     NumberFormatPipe,
     VideosComponent,
-    ImagesComponent
+    ImagesComponent,
+    ProfileComponent
 
   ],
   imports: [
@@ -70,7 +73,8 @@ import { ImagesComponent } from './pages/favorites/images/images.component'
     RouterLink,
     ProgressSpinnerModule,
     ToastModule,
-    ImageModule
+    ImageModule,
+    FileUploadModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

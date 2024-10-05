@@ -1,0 +1,49 @@
+<p-progressSpinner *ngIf="isLoading" styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
+    animationDuration=".5s" />
+
+<div class="profileCard">
+
+    <div class="profileItems">
+        <div class="profilePic">
+            <!-- <img src="assets/loginPic.png" alt=""> -->
+            <img *ngIf="this.checkLength == 0" src="assets/noImgUser.png">
+            <img *ngIf="this.checkLength > 0" [src]="this.currentUserImg">
+            <div class="editImg" *ngIf="this.checkLength == 0">
+                <i class="pi pi-pencil" (click)="onEdit()"></i>
+            </div>
+        </div>
+
+        <div class="userName">
+            <h2>{{this.userName}}</h2>
+        </div>
+
+        <div class="userInfo">
+            <div class="dateUser">
+                <p>Joined at: </p>
+            </div>
+            <div class="videos">
+                <p>Videos saved: </p>
+            </div>
+            <div class="imaages">
+                <p>Images saved: </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<p-dialog header="Upload profile picture" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }"
+    [breakpoints]="{ '1000px': '75vw', '400px': '90vw' }">
+
+    <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)"
+        [multiple]="true" accept="image/*">
+        <ng-template pTemplate="content">
+            <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+            </ul>
+        </ng-template>
+    </p-fileUpload>
+
+
+
+</p-dialog>

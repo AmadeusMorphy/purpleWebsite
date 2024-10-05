@@ -37,8 +37,12 @@
         <div class="profile">
 
           <p-menu #menu [model]="sideItems" [popup]="true" />
-          <p-avatar *ngIf="isLoggedIn == false" (click)="menu.toggle($event)" icon="pi pi-user" styleClass="mr-2" size="large" shape="circle" />
-          <p-avatar *ngIf="isLoggedIn == true" (click)="menu.toggle($event)" image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" size="large" shape="circle" />
+          <p-avatar *ngIf="this.userLoggedIn == false" (click)="menu.toggle($event)" icon="pi pi-user" styleClass="mr-2"
+            size="large" shape="circle" />
+          <p-avatar *ngIf="this.userLength == 0" (click)="menu.toggle($event)" icon="pi pi-user" styleClass="mr-2"
+            size="large" shape="circle" />
+          <p-avatar *ngIf="this.userLength > 0" (click)="menu.toggle($event)" [image]="this.userImg" styleClass="mr-2"
+            size="large" shape="circle" />
         </div>
       </div>
     </ng-template>
@@ -79,7 +83,7 @@
       <h2 class="loginTitle">Sign Up</h2>
       <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
         <div class="loginInputs">
-          <input type="text" pInputText formControlName="name" placeholder="Username" class="responsiveInput" />
+          <input type="text" pInputText formControlName="username" placeholder="Username" class="responsiveInput" />
           <input type="email" pInputText formControlName="email" placeholder="Email" class="responsiveInput" />
           <input type="password" pInputText formControlName="password" placeholder="Password" class="responsiveInput" />
         </div>
