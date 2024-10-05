@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-
+import { ChangeDetectorRef } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-pictures',
   templateUrl: './pictures.component.html',
@@ -8,11 +10,17 @@ import { Component } from '@angular/core';
 })
 export class PicturesComponent {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private changeDetectorRef: ChangeDetectorRef,
+    private userService: UserService,
+    private messsageService: MessageService
+  ) { }
 
   pics: {
     imgUrl: string,
-    title: string
+    title: string,
+    id: string
   }[] = []
   pics2: {
     imgUrl: string,
@@ -27,8 +35,12 @@ export class PicturesComponent {
     title: string
   }[] = []
 
+  favImg: any;
+
   imgDialog: boolean = false;
-  selectedImageUrl: string = '';
+  selectedImageUrl: string = ''
+  loggedInUser: any = {};
+  currentUserId: any;
   isLoading: boolean = false;
 
 
@@ -47,12 +59,13 @@ export class PicturesComponent {
 
     this.http.get('https://www.pornpics.com/additional_thumbs?mix=1&langs=en-US&code=jo').subscribe(
       (res: any) => {
-        console.log('FREE API: ', res.data.map((item: any) => item.t))
+        console.log('FREE API: ', res)
 
         this.pics = res.data.map((item: any) => {
           return {
             imgUrl: item.t,
-            title: item.n
+            title: item.n,
+            id: item.id
           }
         })
         console.log(this.pics);
@@ -63,6 +76,60 @@ export class PicturesComponent {
       }
     )
   }
+
+  checkUserLoggedIn() {
+    const user = localStorage.getItem('userId');
+    this.currentUserId = user
+    this.loggedInUser = !!user;
+
+    console.log(this.loggedInUser)
+    if (user) {
+      this.loggedInUser == true;
+      console.log("You are logged in as: ", this.currentUserId);
+    } else {
+      this.loggedInUser == false;
+      console.error("You're not logged in")
+    }// Check if user data exists
+  }
+
+  selectedFav(id: string) {
+    const clickedImg = this.pics.find(image => image.id === id);
+    if (clickedImg) {
+
+      this.changeDetectorRef.detectChanges();
+
+      this.favImg = clickedImg;
+      console.log("you clicked on it: ", clickedImg)
+    } else {
+      console.log('not found')
+    }
+  }
+
+  putImgDb() {
+    const user = localStorage.getItem('userId');
+    this.currentUserId = user
+    const newFav = this.favImg
+
+    if (this.loggedInUser) {
+      this.userService.updateImages(this.currentUserId, newFav).subscribe(
+        (updateUs) => {
+          this.messsageService.add({ severity: 'success', summary: 'Image Added!', icon: 'pi pi-heart', detail: 'Its now in your favorites' });
+
+          console.log('ADDED TO THE DB: ', updateUs);
+          this.loggedInUser = updateUs;
+
+        },
+        (error) => {
+          console.error('Error Bitch: ', error)
+        }
+      );
+    } else {
+
+      console.error('No user found')
+    }
+
+  }
+
 
   getPics2() {
 

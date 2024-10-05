@@ -5,7 +5,7 @@
 
 
 .imgContainer {
-    column-count: 5;
+    column-count:4 ;
     padding-left: 100px;
     padding-right: 100px;
 }
@@ -36,6 +36,40 @@
 }
 
 
+::ng-deep .p-message-success {
+    background-color: #77376e !important;
+    /* Light cyan background */
+    border-color: #3a0046 !important;
+    /* Teal border */
+    color: #ffffff !important;
+    /* Dark teal text */
+}
+
+::ng-deep .p-toast .p-toast-message-success {
+    background-color: #810999 !important;
+    /* Change background color */
+    border-color: #bf00c5 !important;
+    /* Change border color */
+    color: #ffffff !important;
+    /* Change text color */
+}
+
+::ng-deep .p-toast-message-success {
+    background-color: #810999 !important;
+    /* Change background color */
+    border-color: #bf00c5 !important;
+    /* Change border color */
+    color: #ffffff !important;
+    /* Change text color */
+}
+
+::ng-deep .p-toast .pi-heart {
+    color: #fbdcff !important;
+}
+
+::ng-deep div#pn_id_7 {
+    top: 100% !important;
+}
 
 /* HEART BUTTON TOGGLE */
 .heart-container {

@@ -1,0 +1,25 @@
+
+<div *ngIf="isLoading" class="loading">
+    <div class="cssload-main">
+        <div class="cssload-heart">
+            <span class="cssload-heartL"></span>
+            <span class="cssload-heartR"></span>
+            <span class="cssload-square"></span>
+        </div>
+        <div class="cssload-shadow"></div>
+    </div>
+</div>
+<p-toast />
+
+<div class="backBtn" (click)="routeBack()">
+    <i class="pi pi-arrow-left"></i>
+</div>
+
+<div class="imgContainer">
+    <div class="imgs">
+
+        <div class="img" *ngFor="let img of loggedInUser?.images">
+            <p-image [src]="img.imgUrl" alt="Image" width="auto" [preview]="true" />
+        </div>
+    </div>
+</div>

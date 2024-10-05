@@ -30,14 +30,18 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { PicturesComponent } from './pages/pictures/pictures.component';
 import { NumberFormatPipe } from './number-format.pipe';
-import { ImageModule } from 'primeng/image'
+import { ImageModule } from 'primeng/image';
+import { VideosComponent } from './pages/favorites/videos/videos.component';
+import { ImagesComponent } from './pages/favorites/images/images.component'
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FavoritesComponent,
     PicturesComponent,
-    NumberFormatPipe
+    NumberFormatPipe,
+    VideosComponent,
+    ImagesComponent
 
   ],
   imports: [

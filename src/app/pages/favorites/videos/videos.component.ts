@@ -1,14 +1,16 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
+
 @Component({
-  selector: 'app-favorites',
-  templateUrl: './favorites.component.html',
-  styleUrls: ['./favorites.component.scss']
+  selector: 'app-videos',
+  templateUrl: './videos.component.html',
+  styleUrls: ['./videos.component.scss']
 })
-export class FavoritesComponent {
+export class VideosComponent {
+
   playlistItemForm!: FormGroup; // Form for playlist item
   loggedInUser: any = {};
 
@@ -35,6 +37,7 @@ export class FavoritesComponent {
     private messsageService: MessageService) { }
 
   ngOnInit(): void {
+
     this.playlistItemForm = this.fb.group({
       item: [''] // Form control for playlist item input
     });
@@ -58,17 +61,22 @@ export class FavoritesComponent {
 
     // Fetch the logged-in user data (you would probably get this from a login or user management service)
     this.getLoggedInUser();
+
+
   }
 
   getLoggedInUser(): void {
+    this.isLoading = true;
     const userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
 
     this.changeDetectorRef.detectChanges()
     if (userId) {
       this.userService.getUser(userId).subscribe(user => {
         this.loggedInUser = user;
+        console.log(this.loggedInUser)
         this.isLoading = false
       }, error => {
+        this.isLoading = false
         console.error('Error fetching user data', error);
       });
     } else {
@@ -77,8 +85,11 @@ export class FavoritesComponent {
         
         this.router.navigate(['/home'])
         console.error('No user ID found in local storage');
-   
     }
+
+    // if(this.loggedInUser?.playlist[0].videoId != null) {
+    //   this.emptyPage == false;
+    // }
   }
 
   getLoggedInUserFav() {
@@ -109,6 +120,7 @@ export class FavoritesComponent {
     if (this.loggedInUser) {
       this.userService.deleteVideoFromPlaylist(this.loggedInUser.id, this.favVideo.videoId).subscribe(
         (updateUser) => {
+          
           console.log('DELETED FROM THE DB: ', updateUser);
           this.messsageService.add({ severity: 'success', summary: 'Video Deleted!', icon: 'pi pi-times', detail: 'It has been removed from your favorites' });
           this.loggedInUser = updateUser;
@@ -171,4 +183,8 @@ export class FavoritesComponent {
     }
   }
 
+
+  routeBack() {
+    this.router.navigate(['/favorites'])
+  }
 }

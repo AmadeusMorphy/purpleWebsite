@@ -1,19 +1,3 @@
-<!-- <button (click)="logout()">Logout</button> -->
-
-
-<!-- <div>
-    <h2>Welcome, {{ loggedInUser.name }}</h2>
-    <form [formGroup]="playlistItemForm" (ngSubmit)="addPlaylistItem()">
-        <label for="item">Add to Playlist:</label>
-        <input id="item" formControlName="item" />
-        <button type="submit">Add</button>
-    </form>
-
-    <h3>Your Playlist:</h3>
-    <ul>
-        <li *ngFor="let item of loggedInUser?.playlist">{{ item.videoUrl }}</li>
-    </ul>
-</div> -->
 
 
 <div *ngIf="isLoading" class="loading">
@@ -29,13 +13,40 @@
 <p-toast />
 
 <div class="cardss">
+    <p-card>
+        <ng-template pTemplate="header">
+            <div class="thumbnail-container">
+                <a routerLink="/videos">
+                <img src="https://static.vecteezy.com/system/resources/previews/022/936/067/non_2x/line-icon-for-porn-vector.jpg" style="max-width: 300px; width: 100%;" alt="">
+            </a>
+            </div>
+            <div class="details" style="display: flex; justify-content: center;">
+                <h2>Videos</h2>
+            </div>
+        </ng-template>
+    </p-card>
+    <p-card>
+        <ng-template pTemplate="header">
+            <div class="thumbnail-container">
+                <a routerLink="/images">
+                <img src="https://static.vecteezy.com/system/resources/previews/035/267/889/non_2x/solid-icon-for-porn-vector.jpg" style="max-width: 300px; width: 100%;" alt="">
+            </a>
+            </div>
+            <div class="details" style="display: flex; justify-content: center;">
+                <h2>Images</h2>
+            </div>
+        </ng-template>
+    </p-card>
+</div>
+
+<!-- <div class="cardss">
     <p-card [style]="{ width: '320px' }" *ngFor="let fav of loggedInUser?.playlist">
         <ng-template pTemplate="header">
             <div class="thumbnail-container">
                 <a [href]="fav.videoUrl">
                     <img *ngIf="!fav.isThumbnailPlaying" alt="Card" [src]="fav.imgUrl"
-                        (mouseover)="playAnimation(fav.videoId)" />
-
+                    (mouseover)="playAnimation(fav.videoId)" />
+                    
                     <img *ngIf="fav.isThumbnailPlaying" [src]="selectedThumbs[currentThumbIndex]"
                         (mouseleave)="stopSlideshow(fav.videoId)" />
                     <p class="gender-label">{{ fav.length }}</p>
@@ -45,10 +56,17 @@
                 <a [href]="fav.videoUrl" class="ogTitle">{{ fav.title }}</a>
                 <p-menu #menu [model]="videoItem" [popup]="true" />
                 <i (click)="menu.toggle($event)" (click)="selectedFav(fav.videoId)" class="pi pi-ellipsis-v"></i>
-
+                
             </div>
             <h4>{{ fav.views | numberFormat }} Views</h4>
         </ng-template>
     </p-card>
-</div>
+</div> -->
+<p-dialog 
+    id="dialog" 
+    header="Header" 
+    [(visible)]="userDialog" 
+    [style]="{ width: '50vw' }" >
+        <p>You need to login first</p>
+</p-dialog>
 <router-outlet></router-outlet>

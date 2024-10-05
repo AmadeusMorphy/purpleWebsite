@@ -29,10 +29,14 @@
 }
 
 
+::ng-deep .p-inputtext.p-component.p-element {
+    border-radius: 30px !important;
+}
 .flex.align-items-center {
     gap: 18px !important;
     justify-content: space-between;
     display: flex;
+    align-items: center;
 }
 
 .logo {

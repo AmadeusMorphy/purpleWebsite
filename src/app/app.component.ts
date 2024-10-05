@@ -30,6 +30,7 @@ export class AppComponent {
 
   userName: any;
 
+  isLoggedIn: boolean = false;
   lastScrollTop = 0;
   isHidden = false;
   visible: boolean = false;
@@ -139,12 +140,13 @@ export class AppComponent {
       },
       {
         label: 'Pictures',
-        icon: 'pi pi-frame',
+        icon: 'pi pi-images',
         routerLink: '/pictures'
       },
       {
         label: 'Features',
-        icon: 'pi pi-star'
+        icon: 'pi pi-star',
+        routerLink: '/favorites'
       },
     ];
 
@@ -238,10 +240,11 @@ export class AppComponent {
   }
 
   checkUserLoggedIn() {
+    const userData = localStorage
     const user = localStorage.getItem('userId');
-    const UserName = localStorage.getItem('userName')
+    const UserName = localStorage.getItem('username')
     this.userName = UserName
-    console.log(this.userName)
+    console.log(localStorage)
     this.userLoggedIn = user !== null;
     console.log(this.userLoggedIn)
     if (user) {
@@ -265,13 +268,14 @@ export class AppComponent {
 
     this.userService.signIn(email, password).subscribe(
       (response) => {
+        this.isLoggedIn = true;
         if (response.length > 0) {
           this.isLoading = false
           window.location.reload()
           // Assuming the response contains user data
           const user = response[0]; // Get the first matched user
           localStorage.setItem('userId', user.id);
-          localStorage.setItem('userName', user.name);
+          localStorage.setItem('username', user.username);
 
           this.dialogService.closeLoginDialog();
           this.userLoggedIn = true; // Update login status
@@ -292,6 +296,7 @@ export class AppComponent {
 
 
   logout() {
+    this.isLoggedIn = false;
     localStorage.removeItem('userId'); // Remove user data
     this.userLoggedIn = false; // Update login status
     this.updateMenuItems(); // Update menu items back to logged-out version
