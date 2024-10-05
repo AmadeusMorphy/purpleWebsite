@@ -24,15 +24,18 @@ export class PicturesComponent {
   }[] = []
   pics2: {
     imgUrl: string,
-    title: string
+    title: string,
+    id: string
   }[] = []
   pics3: {
     imgUrl: string,
-    title: string
+    title: string,
+    id: string
   }[] = []
   pics4: {
     imgUrl: string,
-    title: string
+    title: string,
+    id: string
   }[] = []
 
   favImg: any;
@@ -45,10 +48,10 @@ export class PicturesComponent {
 
 
   ngOnInit() {
+    this.getPics()
     this.getPics2()
     this.getPics3()
     this.getPics4()
-    this.getPics()
   }
 
 
@@ -94,14 +97,27 @@ export class PicturesComponent {
 
   selectedFav(id: string) {
     const clickedImg = this.pics.find(image => image.id === id);
+    const clickedImg2 = this.pics2.find(image => image.id === id);
+    const clickedImg3 = this.pics3.find(image => image.id === id);
+    const clickedImg4 = this.pics4.find(image => image.id === id);
     if (clickedImg) {
-
       this.changeDetectorRef.detectChanges();
-
       this.favImg = clickedImg;
       console.log("you clicked on it: ", clickedImg)
+    } else if (clickedImg2) {
+      this.changeDetectorRef.detectChanges();
+      this.favImg = clickedImg2;
+      console.log("you clicked on it: ", clickedImg2)
+    } else if (clickedImg3) {
+      this.changeDetectorRef.detectChanges();
+      this.favImg = clickedImg3;
+      console.log("you clicked on it: ", clickedImg3)
+    } else if (clickedImg4) {
+      this.changeDetectorRef.detectChanges();
+      this.favImg = clickedImg4;
+      console.log("you clicked on it: ", clickedImg4)
     } else {
-      console.log('not found')
+      console.log("Not found")
     }
   }
 
@@ -131,21 +147,55 @@ export class PicturesComponent {
   }
 
 
-  getPics2() {
+  // getPics2() {
+  //   this.isLoading = true;
 
-    this.isLoading = true;
+  //   this.http.get('https://www.pornpics.com/additional_thumbs?mix=1&langs=en-US&code=jo').subscribe(
+  //     (res: any) => {
+  //       console.log('FREE API:', res.data.map((item: any) => item.t));
+
+  //       // Process multiple data sets using a helper function
+  //       this.pics2 = this.processData(res.data); // First dataset
+  //       const pics = this.processData(res.data_j); // First dataset
+  //       const picsI = this.processData(res.data_i); // Third dataset
+  //       const picsB = this.processData(res.data_b); // Third dataset
+
+  //       // Combine the pics if needed or handle them separately
+  //       this.pics2 = [...this.pics2, ...pics, ...picsI, ...picsB];
+
+  //       this.isLoading = false;
+  //       console.log(this.pics2);
+  //     }
+  //   );
+  // }
+
+  // processData(dataSet: any[]): any[] {
+  //   return dataSet.map((item: any) => {
+  //     return {
+  //       imgUrl: item.t,
+  //       title: item.n,
+  //       id: item.id
+  //     };
+  //   });
+  // }
+
+
+  getPics2() {
+    this.isLoading = true
+
     this.http.get('https://www.pornpics.com/additional_thumbs?mix=1&langs=en-US&code=jo').subscribe(
       (res: any) => {
         console.log('FREE API: ', res.data.map((item: any) => item.t))
 
-        this.pics2 = res.data_b.map((item: any) => {
+        this.pics3 = res.data_b.map((item: any) => {
           return {
             imgUrl: item.t,
-            title: item.n
+            title: item.n,
+            id: item.id
           }
         })
         this.isLoading = false
-        console.log(this.pics2)
+        console.log(this.pics3)
       }
     )
   }
@@ -159,7 +209,8 @@ export class PicturesComponent {
         this.pics3 = res.data_i.map((item: any) => {
           return {
             imgUrl: item.t,
-            title: item.n
+            title: item.n,
+            id: item.id
           }
         })
         this.isLoading = false
@@ -177,7 +228,8 @@ export class PicturesComponent {
         this.pics4 = res.data_j.map((item: any) => {
           return {
             imgUrl: item.t,
-            title: item.n
+            title: item.n,
+            id: item.id
           }
         })
         this.isLoading = false
