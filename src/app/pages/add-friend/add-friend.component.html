@@ -1,0 +1,20 @@
+<div class="loading" *ngIf="isLoading">
+    <p-progressSpinner ariaLabel="loading" />
+</div>
+
+<div class="body" *ngIf="!isLoading">
+    <div class="card" *ngFor="let user of users; let i = index">
+        <div class="card__img">
+            <img src="assets/bgTest2.png" class="bgImg">
+        </div>
+        <div class="card__avatar"><img [src]="user.profileImg"></div>
+        <div class="card__title">{{user.username}}</div>
+        <div class="card__subtitle">Web Development</div>
+        <div class="card__wrapper">
+            <div class="reqBtn" style="border-radius: 30px;">
+                <p-button *ngIf="!user.isReq" (onClick)="onSendReq(i)">Add friend</p-button>
+                <p-button *ngIf="user.isReq" [disabled]="true">Request Sent</p-button>
+            </div>
+        </div>
+    </div>
+</div>

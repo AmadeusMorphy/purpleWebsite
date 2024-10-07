@@ -53,13 +53,13 @@
 </p-dialog>
 
 
-<p-dialog header="Upload profile picture" [modal]="true" [(visible)]="isDelete" [style]="{ width: '50rem' }"
-    [breakpoints]="{ '1000px': '75vw', '400px': '90vw' }">
+<p-dialog header="Upload profile picture" [modal]="true" [draggable]="false" [(visible)]="isDelete"
+    [style]="{ width: '50rem' }" [breakpoints]="{ '1000px': '75vw', '400px': '90vw' }">
 
     <div class="deleteGroup">
         <div class="deleteContent">
 
-            <img [src]="this.currentUserImg">
+            <img [src]="currentUserImg">
 
             <div class="deleteBtn">
 

@@ -25,6 +25,7 @@ export class ProfileComponent {
   checkLength: any;
   dateJoined: Date | null = null;
 
+  compressedImg: any;
   currentUserImg: string = '';
 
   constructor(
@@ -55,6 +56,7 @@ export class ProfileComponent {
           this.imageUrl = response.data.url;
           this.putImgDb()
           // Save the uploaded image URL
+          window.location.reload()
           this.isLoading = false;
           this.visible = false
           this.messageService.add({ severity: 'success', summary: 'File Uploaded', detail: 'Image uploaded successfully!' });
@@ -99,12 +101,16 @@ export class ProfileComponent {
       this.userName = userName
       this.http.get(`https://66fbddf48583ac93b40d8ce0.mockapi.io/users/login/${this.currentUserId}`).subscribe(
         (res: any) => {
-          this.currentUserImg = res.profileImg[0]
-          console.log(res.profileImg?.length)
+          this.currentUserImg = res.profileImg
+
+          this.reduceImageQuality(this.currentUserImg, 0.1).then((compressedImage) => {
+
+            this.compressedImg = compressedImage
+          });
+
           this.checkLength = res.profileImg?.length
           const onDateJoined = res.DateJoined
           this.dateJoined = new Date(onDateJoined)
-          console.log(this.dateJoined)
         }
       )
 
@@ -114,6 +120,37 @@ export class ProfileComponent {
       this.loggedInUser == false;
       console.error("You're not logged in")
     }// Check if user data exists
+  }
+
+  reduceImageQuality(imageUrl: string, quality: number): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous'; // Handle cross-origin images if necessary
+      img.src = imageUrl;
+
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        if (!ctx) {
+          return reject(new Error('Failed to get 2D context'));
+        }
+
+        // Set canvas dimensions
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // Draw image to canvas
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+
+        // Get the data URL with reduced quality (JPEG supports quality adjustments)
+        const reducedQualityImage = canvas.toDataURL('image/jpeg', quality);
+
+        resolve(reducedQualityImage);
+      };
+
+      img.onerror = (error) => reject(error);
+    });
   }
 
 

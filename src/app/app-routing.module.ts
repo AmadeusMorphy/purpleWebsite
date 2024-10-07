@@ -6,6 +6,10 @@ import { PicturesComponent } from './pages/pictures/pictures.component';
 import { VideosComponent } from './pages/favorites/videos/videos.component';
 import { ImagesComponent } from './pages/favorites/images/images.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { FriendsComponent } from './pages/friends/friends.component';
+import { FriendReqComponent } from './pages/friend-req/friend-req.component';
+import { AddFriendComponent } from './pages/add-friend/add-friend.component';
+import { InboxComponent } from './pages/inbox/inbox.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -13,7 +17,11 @@ const routes: Routes = [
   { path: 'pictures', component: PicturesComponent },
   { path: 'videos', component: VideosComponent },
   { path: 'images', component: ImagesComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'friends', component: FriendsComponent },
+  { path: 'friendReq', component: FriendReqComponent },
+  { path: 'addFriend', component: AddFriendComponent },
+  { path: 'inbox', component: InboxComponent }
 
 ];
 

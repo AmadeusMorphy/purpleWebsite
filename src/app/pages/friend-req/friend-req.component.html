@@ -1,0 +1,26 @@
+<div class="loading" *ngIf="isLoading">
+    <p-progressSpinner ariaLabel="loading" />
+</div>
+
+<div class="body" *ngIf="!isLoading">
+    <h2 *ngIf="this.friendReqs.length == 0">You dont have any friend requests</h2>
+    <div class="card" *ngFor="let user of friendReqs; let i = index">
+        <div class="card__img">
+            <img src="assets/bgTest2.png" class="bgImg">
+        </div>
+        <div class="card__avatar"><img [src]="user.profileImg"></div>
+        <div class="card__title">{{user.username}}</div>
+        <div class="card__subtitle">{{user.email}}</div>
+        <div class="card__wrapper">
+            <div class="reqBtn" style="border-radius: 30px; display: flex; gap:30px; margin-top: 20px;">
+                <p-button *ngIf="!user.isAccept" (onClick)="onAccept(i)">Accept</p-button>
+                <p-button *ngIf="user.isAccept" [disabled]="true">Accepted</p-button>
+
+
+                <!-- <p-button>Accept</p-button> -->
+                <!-- <p-button>Reject</p-button> -->
+                <!-- <p-button *ngIf="user.isReq" [disabled]="true">Request Sent</p-button> -->
+            </div>
+        </div>
+    </div>
+</div>

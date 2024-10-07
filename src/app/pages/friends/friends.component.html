@@ -1,0 +1,26 @@
+<div class="loading" *ngIf="isLoading">
+    <p-progressSpinner ariaLabel="loading" />
+</div>
+<div class="body" *ngIf="!isLoading">
+
+    <h2 *ngIf="this.friends.length == 0">You dont have any friends</h2>
+    <div class="card" *ngFor="let user of friends; let i = index">
+
+        <div class="card__avatar"><img [src]="user.profileImg"></div>
+
+        <div class="card__info">
+            <div class="card__txt">
+                <div class="card__title">{{user.username}}</div>
+                <div class="card__subtitle">{{user.email}}</div>
+            </div>
+            <div class="card__wrapper">
+                <div class="reqBtn" style="border-radius: 30px;">
+                    <button *ngIf="!isClicked" (click)="onSendReq(i)" class="friendsBtn">View profile</button>
+                    <button *ngIf="!isClicked" (click)="removeFriend(i)" class="friendsBtn">Remove</button>
+                    <p-button *ngIf="isClicked" [disabled]="true">Removed</p-button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

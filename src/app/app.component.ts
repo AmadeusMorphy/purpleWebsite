@@ -64,14 +64,34 @@ export class AppComponent {
       command: () => this.navigateToProfile()
     },
     {
-      label: 'Settings',
-      icon: 'pi pi-cog',
-      command: () => this.navigateToSettings()
-    },
-    {
       label: 'Favorites',
       icon: 'pi pi-heart',
       command: () => this.navigateToFavorites()
+    },
+    {
+      label: 'Inbox',
+      icon: 'pi pi-inbox',
+      routerLink: '/inbox'
+    },
+    {
+      label: 'Friends',
+      icon: 'pi pi-users',
+      routerLink: '/friends'
+    },
+    {
+      label: 'Add a friend',
+      icon: 'pi pi-user-plus',
+      routerLink: '/addFriend'
+    },
+    {
+      label: 'Friend Requests',
+      icon: 'pi pi-address-book',
+      routerLink: '/friendReq'
+    },
+    {
+      label: 'Settings',
+      icon: 'pi pi-cog',
+      command: () => this.navigateToSettings()
     },
     {
       label: 'Logout',
@@ -255,7 +275,7 @@ export class AppComponent {
       this.userService.getUser(user).subscribe(
         (res: any) => {
           this.userLength = res.profileImg?.length
-          this.userImg = res.profileImg[0];
+          this.userImg = res.profileImg;
           console.log("Manual Service Response: ", res)
         }
       )

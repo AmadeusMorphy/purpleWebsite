@@ -1,0 +1,105 @@
+<div class="loading" *ngIf="isLoading">
+    <p-progressSpinner ariaLabel="loading" />
+</div>
+
+
+<div class="chat-container" *ngIf="!isLoading">
+    <!-- User List / Inbox -->
+    <div class="user-list" [ngClass]="{'hidden': selectedReceiver}">
+        <div class="inboxList">
+            <h3>Inbox</h3>
+            <p-button icon="pi pi-plus" (onClick)="showFriendsList = true" severity="help" />
+            <!-- <button class="plus-button" (click)="showFriendsList = true">+</button> -->
+        </div>
+        <div *ngFor="let user of inboxUsers" class="user" (click)="selectUser(user)">
+            <img [src]="user.profileImg || 'default-profile.png'" alt="Profile" />
+            <h3>{{ user.username }}</h3>
+        </div>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-window" *ngIf="selectedReceiver">
+        <div class="chat-header" *ngIf="isMobile">
+            <button class="back-button" (click)="backToInbox()">Back</button>
+            <h3>Chatting with {{ selectedReceiver.username }}</h3>
+        </div>
+        <h3 *ngIf="!isMobile" style="margin-left: 20px;">Chatting with {{ selectedReceiver.username }}</h3>
+
+        <!-- <p-scrollPanel [style]="{ width: 'auto', height: '600px' }" styleClass="custombar1"> -->
+        <!--I want it from here-->
+        <div class="custom-scrollbar">
+            <div [ngClass]="{'sent-message': message.senderId === currentUserId, 'received-message': message.senderId !== currentUserId}"
+                *ngFor="let message of getFilteredMessages()">
+
+                <div class="message">
+                    <p><strong>{{ message.senderId === currentUserId ? 'You' : selectedReceiver.username }}:</strong> {{
+                        message.content }} <br>
+                    </p>
+                    <div class="imgMsg"><img [src]="message.image" alt=""></div>
+                </div>
+                <span>{{ message.timestamp | date: 'short' }}</span>
+            </div>
+        </div>
+        <!-- </p-scrollPanel> -->
+        <!--to here-->
+
+        <!-- Send a message -->
+        <div class="send-message">
+            <input type="text" [(ngModel)]="newMessage" (keydown.enter)="sendMessage()"
+                placeholder="Type a message..." />
+
+            <!-- Selected Image Preview -->
+            <div *ngIf="selectedImage" style="position: absolute; margin-left: 50%;">
+                <img [src]="selectedImage" alt="Selected Image" class="preview-image" style="height: 32px;" />
+            </div>
+            <!-- Button to open the image selection modal -->
+            <button (click)="openImageSelection()">Select Image</button>
+
+
+            <button (click)="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Header" [(visible)]="showImageSelection" [modal]="true"
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [style]="{ width: '50vw' }" [draggable]="false"
+    [resizable]="false">
+
+    <h3>Select an Image</h3>
+    <!-- <div class="image-grid">
+            <div *ngFor="let image of currentUserInfo.images" class="image-item" (click)="selectImage(image)">
+                <img [src]="image" alt="Image" />
+            </div>
+        </div> -->
+    <div class="imgContainer">
+        <div class="imgs">
+
+            <div class="img" *ngFor="let image of currentUserInfo">
+                <p-image [src]="image.imgUrl" alt="Image" width="auto" (click)="selectImage(image.imgUrl)" />
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog *ngIf="showFriendsList && !isLoading" header="Header" [(visible)]="showFriendsList" [modal]="true"
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [style]="{ width: '50vw' }" [draggable]="false"
+    [resizable]="false">
+
+    <!-- <div class="newList">
+        <div *ngFor="let friend of friendsList" class="newChat" (click)="startNewChat(friend)">
+            <img [src]="friend.profileImg || 'default-profile.png'" alt="Profile" />
+            <h3 style="margin-left: 10px;">{{ friend.username }}</h3>
+        </div>
+    </div> -->
+
+    <div class="friendsList" *ngFor="let friend of friendsList" (click)="startNewChat(friend)">
+        <div class="userItems">
+            <div class="pfp">
+                <img [src]="friend.profileImg" alt="">
+            </div>
+            <div class="usernameFriend">
+                <h3>{{ friend.username }}</h3>
+            </div>
+        </div>
+    </div>
+</p-dialog>

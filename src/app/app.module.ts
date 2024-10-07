@@ -35,6 +35,10 @@ import { VideosComponent } from './pages/favorites/videos/videos.component';
 import { ImagesComponent } from './pages/favorites/images/images.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { AddFriendComponent } from './pages/add-friend/add-friend.component';
+import { FriendReqComponent } from './pages/friend-req/friend-req.component';
+import { FriendsComponent } from './pages/friends/friends.component';
+import { InboxComponent } from './pages/inbox/inbox.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +48,11 @@ import { FileUploadModule } from 'primeng/fileupload';
     NumberFormatPipe,
     VideosComponent,
     ImagesComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddFriendComponent,
+    FriendReqComponent,
+    FriendsComponent,
+    InboxComponent
 
   ],
   imports: [
