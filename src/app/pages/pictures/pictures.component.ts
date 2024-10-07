@@ -52,6 +52,8 @@ export class PicturesComponent {
     this.getPics2()
     this.getPics3()
     this.getPics4()
+
+    console.log('refreshed? ', this.pics3)
   }
 
 
@@ -71,7 +73,6 @@ export class PicturesComponent {
             id: item.id
           }
         })
-        console.log(this.pics);
         this.isLoading = false
       }, (error) => {
         this.isLoading = false;
@@ -88,7 +89,6 @@ export class PicturesComponent {
     console.log(this.loggedInUser)
     if (user) {
       this.loggedInUser == true;
-      console.log("You are logged in as: ", this.currentUserId);
     } else {
       this.loggedInUser == false;
       console.error("You're not logged in")
@@ -187,7 +187,7 @@ export class PicturesComponent {
       (res: any) => {
         console.log('FREE API: ', res.data.map((item: any) => item.t))
 
-        this.pics3 = res.data_b.map((item: any) => {
+        this.pics2 = res.data_b.map((item: any) => {
           return {
             imgUrl: item.t,
             title: item.n,
@@ -195,7 +195,6 @@ export class PicturesComponent {
           }
         })
         this.isLoading = false
-        console.log(this.pics3)
       }
     )
   }
@@ -214,7 +213,6 @@ export class PicturesComponent {
           }
         })
         this.isLoading = false
-        console.log(this.pics3)
       }
     )
   }
@@ -233,7 +231,7 @@ export class PicturesComponent {
           }
         })
         this.isLoading = false
-        console.log(this.pics4)
+        console.log('Refreshed" :', this.pics4)
       }
     )
   }
